@@ -49,7 +49,7 @@
           title: "Cartes de Crédit — Activité & Utilisation",
           image: "images/Projet1/3.png",
           description:
-            "Suivi opérationnel des cartes émises (198), utilisées (172) et actives (104), avec analyse par ligne de produit et évolution mensuelle pour mesurer l’adoption et l’engagement."
+            "Suivi opérationnel des cartes émises, utilisées et actives, avec analyse par ligne de produit et évolution mensuelle pour mesurer l’adoption et l’engagement."
         },
         {
           title: "Revenus — Rentabilité & Risque",

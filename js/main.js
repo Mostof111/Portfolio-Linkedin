@@ -132,6 +132,7 @@ function updateToolbarState() {
 // ===============================
 // Mobile sticky topbar builder
 // FIX: clone the sidebar instead of moving it
+// CHANGE: remove icons in topbar (keep only name/role/kpi)
 // ===============================
 function initMobileTopbar() {
   const isMobile = window.innerWidth <= 1024;
@@ -147,7 +148,6 @@ function initMobileTopbar() {
   const fullName = (sidebarSource.querySelector('.name')?.textContent || '').trim();
   const role = (sidebarSource.querySelector('.title')?.textContent || '').trim();
   const kpiHTML = sidebarSource.querySelector('.sidebar-kpis')?.innerHTML || '';
-  const social = sidebarSource.querySelector('.social-icons');
 
   const topbar = document.createElement('div');
   topbar.className = 'mobile-topbar';
@@ -166,15 +166,7 @@ function initMobileTopbar() {
         <div class="mobile-topbar-kpi sidebar-kpis">${kpiHTML}</div>
       </div>
     </div>
-    <div class="mobile-topbar-right"></div>
   `;
-
-  const right = topbar.querySelector('.mobile-topbar-right');
-  if (social && right) {
-    const socialClone = social.cloneNode(true);
-    socialClone.className = '';
-    Array.from(socialClone.children).forEach(el => right.appendChild(el));
-  }
 
   const sidebarClone = sidebarSource.cloneNode(true);
   sidebarClone.dataset.mobileClone = "1";

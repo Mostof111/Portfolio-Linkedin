@@ -148,7 +148,9 @@ function createContent() {
             </a>
           </div>
 
+          
           <!-- SNOWUI -->
+          <!--
           <div class="project-card">
             <div class="project-image project-carousel" data-carousel="projet4">
               <div class="carousel-track">
@@ -175,6 +177,7 @@ function createContent() {
               En savoir plus →
             </a>
           </div>
+          -->
 
         </div>
       </section>
@@ -183,7 +186,7 @@ function createContent() {
         <div class="xp-section-wrap">
           <div class="xp-header">
             <h2 class="section-title">CE QUE JE FAIS</h2>
-            <div class="xp-subtitle">Extraits de missions (BI / Data / Gouvernance)</div>
+            <div class="xp-subtitle">BI / Data / Gouvernance</div>
           </div>
 
           <div class="xp-grid">
