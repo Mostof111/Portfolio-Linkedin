@@ -1,0 +1,187 @@
+/* ============================
+   Safari Toolbar
+============================ */
+
+.safari-toolbar {
+    background: #E8E8E8;
+    border-bottom: 1px solid #d1d1d1;
+    padding: 10px 16px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+/* ============================
+   Window controls
+============================ */
+
+.window-controls {
+    display: flex;
+    gap: 8px;
+}
+
+.window-controls div {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: transform 120ms ease, opacity 120ms ease;
+}
+
+.window-controls div:hover {
+    opacity: 0.85;
+    transform: scale(1.05);
+}
+
+.window-controls .red { background: #FF5F57; }
+.window-controls .yellow { background: #FEBC2E; }
+.window-controls .green { background: #28C840; }
+
+/* ============================
+   Navigation arrows
+============================ */
+
+.nav-arrows {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+.nav-btn {
+    width: 30px;
+    height: 30px;
+    border-radius: 8px;
+    border: 0;
+    background: transparent;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    cursor: pointer;
+    transition:
+        background 160ms ease,
+        transform 120ms ease,
+        box-shadow 160ms ease,
+        opacity 160ms ease;
+}
+
+.nav-btn svg {
+    width: 18px;
+    height: 18px;
+    stroke: #666;
+    transition: stroke 160ms ease;
+}
+
+/* Hover élégant */
+.nav-btn:hover:not(.disabled):not(:disabled) {
+    background: rgba(59, 130, 246, 0.08);
+}
+
+.nav-btn:hover:not(.disabled):not(:disabled) svg {
+    stroke: #2563eb;
+}
+
+/* Press style Safari */
+.nav-btn:active:not(.disabled):not(:disabled) {
+    transform: scale(0.92);
+    background: rgba(59, 130, 246, 0.15);
+    box-shadow: inset 0 2px 4px rgba(0,0,0,0.15);
+}
+
+/* Disabled state */
+.nav-btn.disabled,
+.nav-btn:disabled {
+    opacity: 0.35;
+    pointer-events: none;
+    cursor: default;
+}
+
+.nav-btn.disabled svg,
+.nav-btn:disabled svg {
+    stroke: #9ca3af;
+}
+
+/* ============================
+   Address bar
+============================ */
+
+.address-bar {
+    flex: 1;
+    max-width: 600px;
+    margin: 0 auto;
+    background: white;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 6px 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.address-bar svg {
+    width: 14px;
+    height: 14px;
+    color: #999;
+}
+
+.address-bar span {
+    font-size: 13px;
+    color: #666;
+}
+
+/* ============================
+   Toolbar icons
+============================ */
+
+.toolbar-icons {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+}
+
+.toolbar-icons svg {
+    width: 20px;
+    height: 20px;
+    color: #666;
+    cursor: pointer;
+    transition: color 160ms ease;
+}
+
+.toolbar-icons svg:hover {
+    color: #2563eb;
+}
+
+/* ============================
+   Sidebar toggle (mobile)
+============================ */
+
+.sidebar-toggle {
+    display: none;
+    background: transparent;
+    border: 0;
+    padding: 6px;
+    border-radius: 8px;
+    cursor: pointer;
+    color: #666;
+    transition: background 160ms ease;
+}
+
+.sidebar-toggle svg {
+    width: 20px;
+    height: 20px;
+}
+
+.sidebar-toggle:hover {
+    background: #f3f4f6;
+}
+
+/* visible uniquement sur mobile/tablette */
+@media (max-width: 1024px) {
+    .sidebar-toggle {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+    }
+}

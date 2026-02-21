@@ -1,0 +1,90 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica', 'Arial', sans-serif;
+    background: linear-gradient(135deg, #f5f7fa 0%, #e4e8eb 100%);
+    height: 100vh;
+
+    /* ✅ le browser reste dans l’écran */
+    overflow: hidden;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    /* ✅ marge visible autour du browser */
+    padding: 16px;
+}
+
+
+.browser-window {
+    width: min(1400px, calc(100vw - 32px));
+    height: min(700px, calc(100vh - 32px)); /* ✅ jamais hors écran */
+
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+    overflow: hidden;
+
+    display: flex;
+    flex-direction: column; /* ✅ pour gérer la hauteur interne */
+}
+
+
+.blue-line {
+    height: 4px;
+    background: linear-gradient(90deg, #3b82f6 0%, #1A4587 50%, #3b82f6 100%);
+}
+
+.main-content {
+    display: flex;
+    flex: 1;
+    min-height: 0;
+    position: relative; /* ✅ nécessaire pour sidebar en overlay sur mobile */
+}
+
+
+
+
+.section-title {
+    font-size: 12px;
+    font-weight: 600;
+    color: #9ca3af;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 16px;
+}
+
+@media (max-width: 1024px) {
+    .main-content {
+        flex-direction: column;
+        min-height: 0;
+    }
+
+    .sidebar {
+        width: 100%;
+        height: auto;
+        overflow: visible; /* ✅ pas coupée */
+    }
+
+    /* ✅ le contenu prend l’espace restant et scroll */
+    #content {
+        flex: 1;
+        min-height: 0;
+    }
+
+    .content-area {
+        height: 100%;
+        overflow-y: auto;
+    }
+}
+
+@media (max-height: 720px) {
+    .sidebar {
+        overflow-y: auto; /* ✅ seulement si l’écran est trop bas */
+    }
+}
