@@ -82,25 +82,33 @@
   overflow: hidden;
 }
 
-/* zone image: padding + centre */
+/* ===== ReadMore media container (img + video) ===== */
 .project-page-media{
   width: 100%;
-  aspect-ratio: 13 / 8;   /* 1300x800 */
-  background: #f3f4f6;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  padding: 18px;          /* ✅ réduit visuellement la taille de l’image */
+  aspect-ratio: 13 / 8;      /* ✅ garde une zone stable */
+  background: #f3f4f6;       /* même fond que tes carousels */
+  border-radius: 14px;       /* adapte si tu veux */
+  overflow: hidden;          /* ✅ coupe ce qui dépasse */
+  display: grid;
+  place-items: center;
 }
 
-.project-page-media img{
+/* Images et vidéos : même comportement */
+.project-page-media img,
+.project-page-media video{
   width: 100%;
   height: 100%;
-  object-fit: contain;    /* pas de coupe */
   display: block;
+  object-fit: contain;       /* ✅ pas de découpe, reste contenu */
 }
+
+/* Optionnel : si tu veux plutôt remplir la box (avec découpe) */
+/*
+.project-page-media img,
+.project-page-media video{
+  object-fit: cover;
+}
+*/
 
 .project-page-text{
   padding: 14px 16px 16px 16px;

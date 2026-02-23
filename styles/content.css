@@ -27,6 +27,14 @@
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     position: relative;
     background: #f3f4f6;
+
+     cursor: pointer;
+  transition: transform 0.35s ease, opacity 0.35s ease;
+}
+
+.project-image:hover {
+  transform: scale(1.02);
+  opacity: 0.95;
 }
 
 
@@ -447,13 +455,20 @@
   transition: transform 650ms cubic-bezier(.22,.8,.2,1);
 }
 
-.carousel-track img {
+/* Images ET vidéos se comportent pareil */
+.carousel-track img,
+.carousel-track video {
   flex: 0 0 100%;
   width: 100%;
   height: 100%;
-  object-fit: contain;       /* ✅ pas de découpe */
-  background: #f3f4f6;       /* fond propre si bandes */
+  object-fit: contain;      /* ✅ pas de découpe */
+  background: #f3f4f6;      /* fond propre si bandes */
   display: block;
+}
+
+/* Important pour éviter glitch iOS / Safari */
+.carousel-track video {
+  pointer-events: none;     /* évite conflit swipe/click */
 }
 
 .project-carousel::after {

@@ -10,10 +10,12 @@ function createContent() {
           <div class="project-card">
             <div class="project-image project-carousel" data-carousel="projet5">
               <div class="carousel-track">
-                <img src="images/Projet1/1.gif" alt="Projet 1 - 1">
-                <img src="images/Projet1/2.png" alt="Projet 1 - 2">
-                <img src="images/Projet1/3.png" alt="Projet 1 - 3">
-                <img src="images/Projet1/4.png" alt="Projet 1 - 4">
+                  <video class="carousel-video" autoplay muted loop playsinline preload="metadata">
+                    <source src="images/Projet1/1.webm" type="video/webm">
+                  </video>                
+                <img src="images/Projet1/2.webp" alt="Projet 1 - 2">
+                <img src="images/Projet1/3.webp" alt="Projet 1 - 3">
+                <img src="images/Projet1/4.webp" alt="Projet 1 - 4">
               </div>
             </div>
 
@@ -37,10 +39,12 @@ function createContent() {
           <div class="project-card">
             <div class="project-image project-carousel" data-carousel="projet2">
               <div class="carousel-track">
-                <img src="images/Projet2/1.gif" alt="Éducation - 1">
-                <img src="images/Projet2/2.png" alt="Éducation - 2">
-                <img src="images/Projet2/3.png" alt="Éducation - 3">
-                <img src="images/Projet2/4.png" alt="Éducation - 4">
+                  <video class="carousel-video" autoplay muted loop playsinline preload="metadata">
+                    <source src="images/Projet2/1.webm" type="video/webm">
+                  </video>
+                  <img src="images/Projet2/2.webp" alt="Éducation - 2">
+                <img src="images/Projet2/3.webp" alt="Éducation - 3">
+                <img src="images/Projet2/4.webp" alt="Éducation - 4">
               </div>
             </div>
 
@@ -66,11 +70,11 @@ function createContent() {
           <div class="project-card">
             <div class="project-image project-carousel" data-carousel="projet3">
               <div class="carousel-track">
-                <img src="images/Projet3/1.png" alt="Projet 3 - 1">
-                <img src="images/Projet3/2.png" alt="Projet 3 - 2">
-                <img src="images/Projet3/3.png" alt="Projet 3 - 3">
-                <img src="images/Projet3/4.png" alt="Projet 3 - 4">
-                <img src="images/Projet3/5.png" alt="Projet 3 - 5">
+                <img src="images/Projet3/1.webp" alt="Projet 3 - 1">
+                <img src="images/Projet3/2.webp" alt="Projet 3 - 2">
+                <img src="images/Projet3/3.webp" alt="Projet 3 - 3">
+                <img src="images/Projet3/4.webp" alt="Projet 3 - 4">
+                <img src="images/Projet3/5.webp" alt="Projet 3 - 5">
               </div>
             </div>
 
@@ -95,11 +99,13 @@ function createContent() {
           <div class="project-card">
             <div class="project-image project-carousel" data-carousel="projet4">
               <div class="carousel-track">
-                <img src="images/Projet4/1.gif" alt="Projet 4 - 1">
-                <img src="images/Projet4/2.png" alt="Projet 2 - 2">
-                <img src="images/Projet4/3.png" alt="Projet 4 - 3">
-                <img src="images/Projet4/4.png" alt="Projet 4 - 4">
-                <img src="images/Projet4/5.png" alt="Projet 4 - 5">
+                  <video class="carousel-video" autoplay muted loop playsinline preload="metadata">
+                    <source src="images/Projet4/1.webm" type="video/webm">
+                  </video>
+                <img src="images/Projet4/2.webp" alt="Projet 2 - 2">
+                <img src="images/Projet4/3.webp" alt="Projet 4 - 3">
+                <img src="images/Projet4/4.webp" alt="Projet 4 - 4">
+                <img src="images/Projet4/5.webp" alt="Projet 4 - 5">
               </div>
             </div>
 
@@ -124,10 +130,10 @@ function createContent() {
           <div class="project-card">
             <div class="project-image project-carousel" data-carousel="projet1">
               <div class="carousel-track">
-                <img src="images/Projet5/1.png" alt="Projet 5 - 1">
-                <img src="images/Projet5/2.png" alt="Projet 5 - 2">
-                <img src="images/Projet5/3.png" alt="Projet 5 - 3">
-                <img src="images/Projet5/4.png" alt="Projet 5 - 4">
+                <img src="images/Projet5/1.webp" alt="Projet 5 - 1">
+                <img src="images/Projet5/2.webp" alt="Projet 5 - 2">
+                <img src="images/Projet5/3.webp" alt="Projet 5 - 3">
+                <img src="images/Projet5/4.webp" alt="Projet 5 - 4">
               </div>
             </div>
 
@@ -154,10 +160,10 @@ function createContent() {
           <div class="project-card">
             <div class="project-image project-carousel" data-carousel="projet4">
               <div class="carousel-track">
-                <img src="images/Projet6/1.png" alt="Projet 6 - 1">
-                <img src="images/Projet6/2.png" alt="Projet 6 - 2">
-                <img src="images/Projet6/3.png" alt="Projet 6 - 3">
-                <img src="images/Projet6/4.png" alt="Projet 6 - 4">
+                <img src="images/Projet6/1.webp" alt="Projet 6 - 1">
+                <img src="images/Projet6/2.webp" alt="Projet 6 - 2">
+                <img src="images/Projet6/3.webp" alt="Projet 6 - 3">
+                <img src="images/Projet6/4.webp" alt="Projet 6 - 4">
               </div>
             </div>
 

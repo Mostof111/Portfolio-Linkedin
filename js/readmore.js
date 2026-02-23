@@ -1,18 +1,6 @@
 /* ============================
    Read more module (FIXED)
-   - No nested .content-area
-   - #content is replaced with:
-       - state.renderList()   (must include .content-area inside)
-       - or a detail wrapper  <div class="content-area">...</div>
-   - Navigation uses toolbar arrows (back/forward)
-   - Exposes:
-     ReadMore.init({ renderList, onAfterListRender })
-     ReadMore.open(projectId)
-     ReadMore.navBack()
-     ReadMore.navForward()
-     ReadMore.isDetail()
-     ReadMore.canGoBack()
-     ReadMore.canGoForward()
+   + Support .webm videos in detail pages
 ============================ */
 
 (function () {
@@ -21,7 +9,7 @@
     renderList: null,
     onAfterListRender: null,
 
-    stack: [],     // { type:'list' } | { type:'detail', id }
+    stack: [],
     idx: -1
   };
 
@@ -35,25 +23,25 @@
       pages: [
         {
           title: "Landing — Credit Cards Dashboard",
-          image: "images/Projet1/1.gif",
+          image: "images/Projet1/1.webm",
           description:
             "Page d’introduction positionnant la solution comme un outil de pilotage data-driven dédié à la performance cartes et à la maîtrise du risque."
         },
         {
           title: "Vue Globale — Performance Clients & Revenus",
-          image: "images/Projet1/2.png",
+          image: "images/Projet1/2.webp",
           description:
             "Vision consolidée du portefeuille : total clients, cartes et revenus, avec répartition par filiale et tendances mensuelles pour identifier la dynamique régionale."
         },
         {
           title: "Cartes de Crédit — Activité & Utilisation",
-          image: "images/Projet1/3.png",
+          image: "images/Projet1/3.webp",
           description:
             "Suivi opérationnel des cartes émises, utilisées et actives, avec analyse par ligne de produit et évolution mensuelle pour mesurer l’adoption et l’engagement."
         },
         {
           title: "Revenus — Rentabilité & Risque",
-          image: "images/Projet1/4.png",
+          image: "images/Projet1/4.webp",
           description:
             "Analyse détaillée des sources de revenus (intérêts, transactions, pénalités), encours, taux d’impayés et taux de recouvrement pour piloter la rentabilité et le risque crédit."
         }
@@ -68,25 +56,25 @@
       pages: [
         {
           title: "Landing — Accueil",
-          image: "images/Projet2/1.gif",
+          image: "images/Projet2/1.webm",
           description:
             "Point d’entrée : la promesse est claire — transformer les données scolaires en décisions rapides."
         },
         {
           title: "Tableau de bord — Vue d’ensemble",
-          image: "images/Projet2/2.png",
+          image: "images/Projet2/2.webp",
           description:
             "Le « pouls » national : écoles, enseignants, élèves + vues par type/statut et zones pour repérer où agir en priorité."
         },
         {
           title: "Écoles — Infrastructures & dispositifs",
-          image: "images/Projet2/3.png",
+          image: "images/Projet2/3.webp",
           description:
             "Zoom terrain : accessibilité, inondations, électricité, eau, cantine, latrines… pour cibler les écoles à risque et les besoins urgents."
         },
         {
           title: "Élèves — Effectifs & vulnérabilités",
-          image: "images/Projet2/4.png",
+          image: "images/Projet2/4.webp",
           description:
             "Lecture sociale : répartition par classe/genre, redoublement, handicap et disparités territoriales pour prioriser les actions."
         }
@@ -99,11 +87,11 @@
       summary:
         "Tableau de bord crypto avancé conçu pour suivre l’allocation d’actifs, la performance de trading, l’exposition au risque et les signaux de marché en temps réel.",
       pages: [
-        { title: "Accueil — Introduction Plateforme Crypto", image: "images/Projet3/1.png", description: "Positionnement stratégique trading orienté performance." },
-        { title: "Accueil — Instantané Marché", image: "images/Projet3/2.png", description: "Vue temps réel des paires principales et tendances." },
-        { title: "Marchés — Vue Portefeuille & Risque", image: "images/Projet3/3.png", description: "Solde, P&L, exposition risque, ordres ouverts." },
-        { title: "Portefeuille — Structure & Signaux Marché", image: "images/Projet3/4.png", description: "Dominance, volatilité, heatmap, watchlist." },
-        { title: "Transferts — Exécution & Sécurité", image: "images/Projet3/5.png", description: "Transferts, frais, limites, statuts, 2FA." }
+        { title: "Accueil — Introduction Plateforme Crypto", image: "images/Projet3/1.webp", description: "Positionnement stratégique trading orienté performance." },
+        { title: "Accueil — Instantané Marché", image: "images/Projet3/2.webp", description: "Vue temps réel des paires principales et tendances." },
+        { title: "Marchés — Vue Portefeuille & Risque", image: "images/Projet3/3.webp", description: "Solde, P&L, exposition risque, ordres ouverts." },
+        { title: "Portefeuille — Structure & Signaux Marché", image: "images/Projet3/4.webp", description: "Dominance, volatilité, heatmap, watchlist." },
+        { title: "Transferts — Exécution & Sécurité", image: "images/Projet3/5.webp", description: "Transferts, frais, limites, statuts, 2FA." }
       ]
     },
 
@@ -113,11 +101,11 @@
       summary:
         "Tableau de bord opérationnel retail permettant aux managers de piloter en temps réel les ventes, la santé des stocks, l’efficacité logistique et les risques opérationnels.",
       pages: [
-        { title: "Couverture — Markets Dashboard", image: "images/Projet4/1.gif", description: "Page d’entrée orientée performance." },
-        { title: "Vue d’Ensemble — Performance Commerciale", image: "images/Projet4/2.png", description: "Ventes, commandes, croissance, satisfaction." },
-        { title: "Commandes & Logistique — Suivi SLA", image: "images/Projet4/3.png", description: "Livraisons à l’heure, délais, retours, exceptions." },
-        { title: "Produits — Stratégie Stock & Réassort", image: "images/Projet4/4.png", description: "Stocks faibles/ruptures et réassort priorisé." },
-        { title: "Activités — Alertes & Monitoring Système", image: "images/Projet4/5.png", description: "Alertes, utilisateurs actifs, criticité incidents." }
+        { title: "Couverture — Markets Dashboard", image: "images/Projet4/1.webm", description: "Page d’entrée orientée performance." },
+        { title: "Vue d’Ensemble — Performance Commerciale", image: "images/Projet4/2.webp", description: "Ventes, commandes, croissance, satisfaction." },
+        { title: "Commandes & Logistique — Suivi SLA", image: "images/Projet4/3.webp", description: "Livraisons à l’heure, délais, retours, exceptions." },
+        { title: "Produits — Stratégie Stock & Réassort", image: "images/Projet4/4.webp", description: "Stocks faibles/ruptures et réassort priorisé." },
+        { title: "Activités — Alertes & Monitoring Système", image: "images/Projet4/5.webp", description: "Alertes, utilisateurs actifs, criticité incidents." }
       ]
     },
 
@@ -127,10 +115,10 @@
       summary:
         "Suivre l’engagement, mesurer l’impact sur les connaissances et identifier les écarts de performance entre régions et équipes.",
       pages: [
-        { title: "Vue Exécutive", image: "images/Projet5/1.png", description: "Positionnement stratégique du dashboard." },
-        { title: "Engagement & Performance", image: "images/Projet5/2.png", description: "KPI d’engagement + dynamiques temporelles." },
-        { title: "Benchmark Individuel & Équipes", image: "images/Projet5/3.png", description: "Classement, tendances, identification des écarts." },
-        { title: "Impact & Progression", image: "images/Projet5/4.png", description: "Knowledge gain, durée session, écarts régionaux." }
+        { title: "Vue Exécutive", image: "images/Projet5/1.webp", description: "Positionnement stratégique du dashboard." },
+        { title: "Engagement & Performance", image: "images/Projet5/2.webp", description: "KPI d’engagement + dynamiques temporelles." },
+        { title: "Benchmark Individuel & Équipes", image: "images/Projet5/3.webp", description: "Classement, tendances, identification des écarts." },
+        { title: "Impact & Progression", image: "images/Projet5/4.webp", description: "Knowledge gain, durée session, écarts régionaux." }
       ]
     },
 
@@ -140,10 +128,10 @@
       summary:
         "Suivre la croissance utilisateurs, la performance projets et les revenus eCommerce pour soutenir la décision.",
       pages: [
-        { title: "Accueil — Introduction SnowUI", image: "images/Projet6/1.png", description: "Entry page orientée pilotage." },
-        { title: "Vue d’Ensemble — Croissance", image: "images/Projet6/2.png", description: "Users, visits, devices, géographie." },
-        { title: "Projets — Performance", image: "images/Projet6/3.png", description: "Suivi statuts, montants, avancement." },
-        { title: "eCommerce — Revenus", image: "images/Projet6/4.png", description: "Online/offline, top produits, satisfaction." }
+        { title: "Accueil — Introduction SnowUI", image: "images/Projet6/1.webp", description: "Entry page orientée pilotage." },
+        { title: "Vue d’Ensemble — Croissance", image: "images/Projet6/2.webp", description: "Users, visits, devices, géographie." },
+        { title: "Projets — Performance", image: "images/Projet6/3.webp", description: "Suivi statuts, montants, avancement." },
+        { title: "eCommerce — Revenus", image: "images/Projet6/4.webp", description: "Online/offline, top produits, satisfaction." }
       ]
     }
   };
@@ -162,8 +150,51 @@
     return (tags || []).map(t => `<span class="tag">${escapeHtml(t)}</span>`).join("");
   }
 
+  function isVideoFile(path) {
+    return /\.(webm|mp4|ogg)(\?.*)?$/i.test(String(path || ""));
+  }
+
+  function guessVideoMime(path) {
+    const p = String(path || "").toLowerCase();
+    if (p.endsWith(".webm")) return "video/webm";
+    if (p.endsWith(".mp4")) return "video/mp4";
+    if (p.endsWith(".ogg")) return "video/ogg";
+    return "";
+  }
+
+  function renderMedia(src, alt) {
+    const safeSrc = escapeHtml(src || "");
+    const safeAlt = escapeHtml(alt || "");
+
+    if (!src) return "";
+
+    if (isVideoFile(src)) {
+      const mime = guessVideoMime(src);
+      return `
+        <video
+          class="project-page-video"
+          autoplay
+          muted
+          loop
+          playsinline
+          preload="metadata"
+        >
+          <source src="${safeSrc}" ${mime ? `type="${mime}"` : ""}>
+          Votre navigateur ne supporte pas la lecture vidéo.
+        </video>
+      `;
+    }
+
+    return `
+      <img
+        src="${safeSrc}"
+        alt="${safeAlt}"
+        loading="lazy"
+      >
+    `;
+  }
+
   function getListArea() {
-    // when list is rendered by createContent(), it must contain .content-area
     return document.querySelector("#content .content-area") || document.querySelector(".content-area");
   }
 
@@ -200,11 +231,9 @@
 
     content.innerHTML = state.renderList();
 
-    // rebind stuff after list render
     if (typeof state.onAfterListRender === "function") state.onAfterListRender();
     bindReadMoreLinks(content);
 
-    // restore list scroll
     const area = getListArea();
     if (area) area.scrollTop = state.lastScrollTop || 0;
 
@@ -216,6 +245,7 @@
     if (!content) return;
 
     const p = PROJECTS[projectId];
+
     const html = p ? `
       <section class="project-detail">
         <div class="project-detail-top">
@@ -230,21 +260,21 @@
         <div class="project-detail-pages">
           <h3 class="project-detail-subtitle">Pages du projet</h3>
 
-          ${(p.pages || []).map((pg, idx) => `
-            <article class="project-page">
-              <div class="project-page-media">
-                <img
-                  src="${escapeHtml(pg.image)}"
-                  alt="${escapeHtml(p.title)} — ${escapeHtml(pg.title || `Page ${idx + 1}`)}"
-                  loading="lazy"
-                >
-              </div>
-              <div class="project-page-text">
-                <h4 class="project-page-title">${escapeHtml(pg.title || `Page ${idx + 1}`)}</h4>
-                <p class="project-page-desc">${escapeHtml(pg.description || "")}</p>
-              </div>
-            </article>
-          `).join("")}
+          ${(p.pages || []).map((pg, idx) => {
+            const title = pg.title || `Page ${idx + 1}`;
+            const alt = `${p.title} — ${title}`;
+            return `
+              <article class="project-page">
+                <div class="project-page-media">
+                  ${renderMedia(pg.image, alt)}
+                </div>
+                <div class="project-page-text">
+                  <h4 class="project-page-title">${escapeHtml(title)}</h4>
+                  <p class="project-page-desc">${escapeHtml(pg.description || "")}</p>
+                </div>
+              </article>
+            `;
+          }).join("")}
         </div>
       </section>
     ` : `
@@ -253,7 +283,6 @@
       </section>
     `;
 
-    // IMPORTANT: detail always wrapped once in .content-area
     content.innerHTML = `<div class="content-area">${html}</div>`;
 
     const area = getListArea();
@@ -264,7 +293,6 @@
 
   // ===== public actions =====
   function open(projectId) {
-    // save list scroll before leaving list
     const area = getListArea();
     if (area) state.lastScrollTop = area.scrollTop || 0;
 
@@ -272,12 +300,10 @@
   }
 
   function navBack() {
-    // If no history: if currently detail -> list
     if (state.idx <= 0) {
       if (isDetail()) renderList(true);
       return;
     }
-
     state.idx -= 1;
     applyHistoryState();
   }
@@ -292,11 +318,8 @@
     const entry = current();
     if (!entry) return;
 
-    if (entry.type === "list") {
-      renderList(false);
-    } else {
-      renderDetail(entry.id, false);
-    }
+    if (entry.type === "list") renderList(false);
+    else renderDetail(entry.id, false);
   }
 
   function bindReadMoreLinks(root = document) {
@@ -318,10 +341,8 @@
       state.renderList = renderList;
       state.onAfterListRender = onAfterListRender;
 
-      // initial history = list
       if (state.idx === -1) pushHistory({ type: "list" });
 
-      // initial bind
       bindReadMoreLinks(document);
     },
 

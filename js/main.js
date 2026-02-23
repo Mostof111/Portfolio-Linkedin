@@ -11,7 +11,7 @@ function initProjectCarousels(root = document) {
     const track = carousel.querySelector('.carousel-track');
     if (!track) return;
 
-    const slides = Array.from(track.querySelectorAll('img'));
+    const slides = Array.from(track.querySelectorAll('img, video'));
     const n = slides.length;
     if (n <= 1) return;
 
@@ -44,6 +44,42 @@ function initProjectCarousels(root = document) {
       if (timer) stop();
       else start();
     });
+  });
+}
+
+// ===============================
+// Project image click -> SAME behavior as [data-readmore] link
+// - Triggers the exact same click pipeline as the button
+// - Preserves ReadMore history + toolbar back/forward behavior
+// - Prevents carousel click (pause/resume) from stealing the click
+// ===============================
+function initProjectImageNavigation(root = document) {
+  const cards = root.querySelectorAll('.project-card');
+
+  cards.forEach((card) => {
+    const imageZone = card.querySelector('.project-image');      // .project-carousel included
+    const readMoreLink = card.querySelector('[data-readmore]');  // the canonical trigger
+    if (!imageZone || !readMoreLink) return;
+
+    // avoid double init after re-render
+    if (imageZone.dataset.imageNavInit === "1") return;
+    imageZone.dataset.imageNavInit = "1";
+
+    imageZone.style.cursor = "pointer";
+
+    imageZone.addEventListener('click', (e) => {
+      // If user clicked an actual link/button inside the image zone, don't hijack
+      if (e.target.closest('a, button')) return;
+
+      // IMPORTANT: stop carousel's click handler (pause/resume) from running
+      e.preventDefault();
+      e.stopPropagation();
+
+      // Fire the SAME click event on the [data-readmore] link
+      // so your existing listeners (ReadMore.bind + global doc handler) run unchanged.
+      const ev = new MouseEvent('click', { bubbles: true, cancelable: true, view: window });
+      readMoreLink.dispatchEvent(ev);
+    }, true); // capture=true helps prevent bubbling to carousel handler
   });
 }
 
@@ -269,6 +305,7 @@ function initToolbarNavigation() {
 
       setTimeout(() => {
         initProjectCarousels(document);
+        initProjectImageNavigation(document);
         initXpCards(document);
         initMobileTopbar();        // ✅ back to list => topbar should exist
         initContactMail(document);
@@ -292,6 +329,7 @@ function initToolbarNavigation() {
 
       setTimeout(() => {
         initProjectCarousels(document);
+        initProjectImageNavigation(document);
         initXpCards(document);
 
         // By default initMobileTopbar creates topbar; but on detail we don't want it.
@@ -316,6 +354,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
   // init UI
   initProjectCarousels(document);
+  initProjectImageNavigation(document);
   initMobileTopbar();
   initXpCards(document);
   initAvatarCoinToggle();
@@ -329,6 +368,7 @@ document.addEventListener('DOMContentLoaded', function () {
       renderList: () => createContent(),
       onAfterListRender: () => {
         initProjectCarousels(document);
+        initProjectImageNavigation(document);
         initXpCards(document);
         ReadMore.bind(document);
 
