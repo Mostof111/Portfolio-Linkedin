@@ -48,40 +48,37 @@ function initProjectCarousels(root = document) {
 }
 
 // ===============================
-// Project image click -> SAME behavior as [data-readmore] link
-// - Triggers the exact same click pipeline as the button
-// - Preserves ReadMore history + toolbar back/forward behavior
-// - Prevents carousel click (pause/resume) from stealing the click
+// Project image click -> EXACT SAME behavior as link
 // ===============================
 function initProjectImageNavigation(root = document) {
   const cards = root.querySelectorAll('.project-card');
 
   cards.forEach((card) => {
-    const imageZone = card.querySelector('.project-image');      // .project-carousel included
-    const readMoreLink = card.querySelector('[data-readmore]');  // the canonical trigger
+    const imageZone = card.querySelector('.project-image');
+    const readMoreLink = card.querySelector('[data-readmore]');
     if (!imageZone || !readMoreLink) return;
 
-    // avoid double init after re-render
     if (imageZone.dataset.imageNavInit === "1") return;
     imageZone.dataset.imageNavInit = "1";
 
     imageZone.style.cursor = "pointer";
 
     imageZone.addEventListener('click', (e) => {
-      // If user clicked an actual link/button inside the image zone, don't hijack
-      if (e.target.closest('a, button')) return;
+      if (e.target.closest('a')) return;
 
-      // IMPORTANT: stop carousel's click handler (pause/resume) from running
-      e.preventDefault();
-      e.stopPropagation();
-
-      // Fire the SAME click event on the [data-readmore] link
-      // so your existing listeners (ReadMore.bind + global doc handler) run unchanged.
-      const ev = new MouseEvent('click', { bubbles: true, cancelable: true, view: window });
-      readMoreLink.dispatchEvent(ev);
-    }, true); // capture=true helps prevent bubbling to carousel handler
+      // 🔥 IMPORTANT: simulate REAL click
+      readMoreLink.dispatchEvent(
+        new MouseEvent("click", {
+          bubbles: true,
+          cancelable: true,
+          view: window
+        })
+      );
+    });
   });
 }
+
+
 
 // ===============================
 // Years of experience auto increment
@@ -104,7 +101,7 @@ function initYearsExp() {
 }
 
 // ===============================
-// Contact form -> mailto with "Sending..." 1s
+// Contact form -> Formspree FIXED RELIABLE
 // ===============================
 function initContactMail(root = document) {
   const form = root.getElementById?.("contactForm") || root.querySelector?.("#contactForm");
@@ -112,34 +109,48 @@ function initContactMail(root = document) {
   if (form.dataset.mailInit === "1") return;
   form.dataset.mailInit = "1";
 
-  form.addEventListener("submit", (e) => {
+  form.addEventListener("submit", async (e) => {
     e.preventDefault();
 
-    const name = form.querySelector('input[name="name"]')?.value?.trim();
-    const email = form.querySelector('input[name="email"]')?.value?.trim();
-    const message = form.querySelector('textarea[name="message"]')?.value?.trim();
     const btn = form.querySelector('button[type="submit"]');
-
-    if (!name || !email || !message || !btn) return;
+    if (!btn) return;
 
     btn.disabled = true;
     btn.classList.add("loading");
     btn.dataset.originalText = btn.textContent || "Send email";
     btn.textContent = "Sending…";
 
+    try {
+      const fd = new FormData(form);
+
+      const res = await fetch(form.action, {
+        method: "POST",
+        body: fd,
+        headers: { "Accept": "application/json" }
+      });
+
+      const data = await res.json().catch(() => null);
+
+      await new Promise(r => setTimeout(r, 1000));
+
+      if (res.ok) {
+        btn.textContent = "Sent ✓";
+        form.reset();
+      } else {
+        console.error("Formspree error:", data);
+        btn.textContent = "Error — try again";
+      }
+
+    } catch (err) {
+      console.error("Mail error:", err);
+      btn.textContent = "Error — try again";
+    }
+
     setTimeout(() => {
-      const subject = encodeURIComponent(`Contact Portfolio — ${name}`);
-      const body = encodeURIComponent(
-        `Full name: ${name}\nEmail: ${email}\n\nMessage:\n${message}\n`
-      );
-
-      window.location.href =
-        `mailto:aganondeodat@gmail.com?subject=${subject}&body=${body}`;
-
       btn.disabled = false;
       btn.classList.remove("loading");
-      btn.textContent = btn.dataset.originalText;
-    }, 1000);
+      btn.textContent = btn.dataset.originalText || "Send email";
+    }, 1200);
   });
 }
 

@@ -381,33 +381,42 @@ function createContent() {
       <span class="contact-mark" aria-hidden="true">✦</span>
     </div>
 
-    <form class="contact-form" id="contactForm">
-      <div class="contact-row">
-        <label class="field">
-          <span class="label">Full name</span>
-          <input class="input" type="text" name="name" placeholder="Your name" autocomplete="name" required>
-        </label>
+      <form class="contact-form"
+            id="contactForm"
+            action="https://formspree.io/f/mqedggaz"
+            method="POST">
+
+        <!-- Optionnel mais recommandé : objet + anti-spam -->
+        <input type="hidden" name="_subject" value="New message — Portfolio">
+        <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
+
+        <div class="contact-row">
+          <label class="field">
+            <span class="label">Full name</span>
+            <input class="input" type="text" name="name" placeholder="Your name" autocomplete="name" required>
+          </label>
+
+          <label class="field">
+            <span class="label">Email</span>
+            <input class="input" type="email" name="email" placeholder="you@email.com" autocomplete="email" required>
+          </label>
+        </div>
 
         <label class="field">
-          <span class="label">Email</span>
-          <input class="input" type="email" name="email" placeholder="you@email.com" autocomplete="email" required>
+          <span class="label">Message</span>
+          <textarea class="textarea" name="message" rows="5"
+            placeholder="Tell me about your need (dashboard, audit, optimization…)" required></textarea>
         </label>
-      </div>
 
-      <label class="field">
-        <span class="label">Message</span>
-        <textarea class="textarea" name="message" rows="5"
-          placeholder="Tell me about your need (dashboard, audit, optimization…)" required></textarea>
-      </label>
+        <div class="contact-actions">
+          <button class="btn primary" type="submit">Send email</button>
+        </div>
 
-      <div class="contact-actions">
-        <button class="btn primary" type="submit">Send email</button>
-      </div>
+        <div class="contact-foot">
+          <span class="contact-note">Email • Usually replies within 24–48h</span>
+        </div>
+      </form>
 
-      <div class="contact-foot">
-        <span class="contact-note">Email • Usually replies within 24–48h</span>
-      </div>
-    </form>
   </div>
 </section>      
 
