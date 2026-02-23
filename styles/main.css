@@ -4,34 +4,40 @@
     box-sizing: border-box;
 }
 
+html, body {
+    height: 100%;
+}
+
 body {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica', 'Arial', sans-serif;
     background: linear-gradient(135deg, #f5f7fa 0%, #e4e8eb 100%);
-    height: 100vh;
 
-    /* ✅ le browser reste dans l’écran */
-    overflow: hidden;
+    /* ✅ padding externe constant */
+    padding: 10px;
+
+    /* ✅ éviter bug 100vh mobile */
+    min-height: 100dvh;
 
     display: flex;
-    align-items: center;
+    align-items: stretch;
     justify-content: center;
 
-    /* ✅ marge visible autour du browser */
-    padding: 16px;
+    margin: 0;
 }
 
 
 .browser-window {
-    width: min(1400px, calc(100vw - 32px));
-    height: min(700px, calc(100vh - 32px)); /* ✅ jamais hors écran */
+    width: min(1400px, 100%);
+    height: 100%;
 
     background: white;
     border-radius: 12px;
     box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
-    overflow: hidden;
 
     display: flex;
-    flex-direction: column; /* ✅ pour gérer la hauteur interne */
+    flex-direction: column;
+
+    overflow: hidden;
 }
 
 
